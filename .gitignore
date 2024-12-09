@@ -1,0 +1,34 @@
+# Saved models
+saved/*
+results/*
+*.pth
+
+# Data
+docs/
+dataset/*
+*/dataset_example/*
+
+# Log
+.idea/
+*.pyc
+*.log
+log_tensorboard/*
+*.lprof
+*.egg-info/
+docs/build/
+wandb/*
+
+# Config
+.vscode/
+general_yaml
+
+# Results and test files
+*.result
+*.test
+*.out
+*.sh
+*.png
+
+# zipfiles
+*.tar.gz
+*.zip

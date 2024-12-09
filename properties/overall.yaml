@@ -1,0 +1,52 @@
+# general
+gpu_id: '3'
+nproc: 1
+use_gpu: True
+seed: 2024
+state: INFO
+reproducibility: True
+#data_path: 'dataset/Douban'
+data_path: 'dataset/Amazon'
+checkpoint_dir: 'saved'
+show_progress: False
+save_dataset: True
+dataset_save_path: ~
+save_dataloaders: False
+dataloaders_save_path: ~
+log_wandb: True
+wandb_project: 'DiffICDR'
+
+# training settings
+train_epochs: ["BOTH:300"]
+train_batch_size: 2048
+learner: adam
+learning_rate: 0.001
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 1
+  alpha: 1.0
+eval_step: 1
+stopping_step: 20
+clip_grad_norm: ~
+# clip_grad_norm:  {'max_norm': 5, 'norm_type': 2}
+weight_decay: 1e-6
+loss_decimal_place: 4
+require_pow: False
+t_retain_frac: 1
+
+# evaluation settings
+eval_args: 
+#this is for target domain, train valid and test
+  split: {'RS':[0.8,0.1,0.1]}
+#this is for source domain, train and valid
+  split_valid: {'RS':[0.8,0.2]}
+  group_by: user
+  order: RO
+  mode: full
+repeatable: False
+metrics: ["Recall","MRR","NDCG","Hit","Precision"]
+topk: [10]
+valid_metric: NDCG@10
+valid_metric_bigger: True
+eval_batch_size: 409600
+metric_decimal_place: 4

@@ -1,0 +1,44 @@
+# dataset config
+state: INFO
+field_separator: "\t"
+source_domain:
+  #dataset: DoubanMovie
+  dataset: 'AmazonSports'
+  #dataset: ml-1m
+  #data_path: 'dataset/Douban'
+  data_path: 'dataset/Amazon'
+  seq_separator: " "
+  USER_ID_FIELD: user_id
+  ITEM_ID_FIELD: item_id
+  RATING_FIELD: rating
+  TIME_FIELD: timestamp
+  NEG_PREFIX: neg_
+  LABEL_FIELD: label
+  threshold: {'rating':0}
+  numerical_features: []          # (list) Float feature fields to be embedded
+  load_col:
+    inter: [user_id, item_id, rating, timestamp]
+  user_inter_num_interval: "[5,inf)"
+  item_inter_num_interval: "[5,inf)"
+  drop_filter_field: True
+
+target_domain:
+  #dataset: 'DoubanMusic'
+  dataset: 'AmazonCloth'
+  #dataset: ml-100k
+  #data_path: 'dataset/Douban'
+  data_path: 'dataset/Amazon'
+  seq_separator: ","
+  USER_ID_FIELD: user_id
+  ITEM_ID_FIELD: item_id
+  RATING_FIELD: rating
+  TIME_FIELD: timestamp
+  NEG_PREFIX: neg_
+  LABEL_FIELD: label
+  threshold: {'rating':0}
+  numerical_features: []          # (list) Float feature fields to be embedded
+  load_col:
+    inter: [user_id, item_id, rating, timestamp]
+  user_inter_num_interval: "[5,inf)"
+  item_inter_num_interval: "[5,inf)"
+  drop_filter_field: True
