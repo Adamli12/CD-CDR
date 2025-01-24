@@ -14,7 +14,7 @@ dataset_save_path: ~
 save_dataloaders: False
 dataloaders_save_path: ~
 log_wandb: True
-wandb_project: 'DiffICDR'
+wandb_project: 'CDCDR'
 
 # training settings
 train_epochs: ["BOTH:300"]

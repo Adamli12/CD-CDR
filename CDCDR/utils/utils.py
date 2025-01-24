@@ -2,13 +2,13 @@
 
 
 """
-DiffICDR.utils.utils
+CDCDR.utils.utils
 ################################
 """
 
 import importlib
 
-from DiffICDR.utils.enum_type import ModelType
+from CDCDR.utils.enum_type import ModelType
 
 
 def get_model(model_name):
@@ -27,7 +27,7 @@ def get_model(model_name):
     model_file_name = model_name.lower()
     model_module = None
     for submodule in model_submodule:
-        module_path = '.'.join(['DiffICDR.model', submodule, model_file_name])
+        module_path = '.'.join(['CDCDR.model', submodule, model_file_name])
         if importlib.util.find_spec(module_path, __name__):
             model_module = importlib.import_module(module_path, __name__)
             break
@@ -49,9 +49,9 @@ def get_trainer(model_type, model_name):
         Trainer: trainer class
     """
     try:
-        return getattr(importlib.import_module('DiffICDR.trainer'), model_name + 'Trainer')
+        return getattr(importlib.import_module('CDCDR.trainer'), model_name + 'Trainer')
     except AttributeError:
         if model_type == ModelType.CROSSDOMAIN:
-            return getattr(importlib.import_module('DiffICDR.trainer'), 'CrossDomainTrainer')
+            return getattr(importlib.import_module('CDCDR.trainer'), 'CrossDomainTrainer')
         else:
             return getattr(importlib.import_module('recbole.trainer'), 'Trainer')

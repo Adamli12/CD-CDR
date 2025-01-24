@@ -1,12 +1,12 @@
 
 
 """
-DiffICDR.model.crossdomain_recommender
+CDCDR.model.crossdomain_recommender
 ##################################
 """
 
 from recbole.model.abstract_recommender import AbstractRecommender
-from DiffICDR.utils import ModelType
+from CDCDR.utils import ModelType
 
 
 class CrossDomainRecommender(AbstractRecommender):

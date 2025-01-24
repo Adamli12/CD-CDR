@@ -1,6 +1,6 @@
 
 """
-DiffICDR.quick_start
+CDCDR.quick_start
 ########################
 """
 import logging
@@ -9,9 +9,9 @@ import torch
 
 from recbole.utils import init_logger, init_seed, set_color
 
-from DiffICDR.config import CDRConfig
-from DiffICDR.data import create_dataset, data_preparation
-from DiffICDR.utils import get_model, get_trainer
+from CDCDR.config import CDRConfig
+from CDCDR.data import create_dataset, data_preparation
+from CDCDR.utils import get_model, get_trainer
 import wandb
 
 

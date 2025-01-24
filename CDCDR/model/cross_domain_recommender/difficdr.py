@@ -2,7 +2,7 @@
 # Ref: Generate What You Prefer: Reshaping Sequential Recommendation via Guided Diffusion (NIPS 23' DreamRec)
 
 r"""
-DiffICDR
+CDCDR
 """
 import torch
 from torch import nn
@@ -77,13 +77,13 @@ class SinusoidalPositionEmbeddings(nn.Module):
         embeddings = torch.cat((embeddings.sin(), embeddings.cos()), dim=-1)
         return embeddings
 
-class DiffICDR(CrossDomainRecommender):
-    r"""DiffICDR, implemented based on the aggregation mechanism of simplex and diffusion mechanism of DreamRec
+class CDCDR(CrossDomainRecommender):
+    r"""CDCDR, implemented based on the aggregation mechanism of simplex and diffusion mechanism of DreamRec
     """
     input_type = InputType.PAIRWISE
 
     def __init__(self, config, dataset):
-        super(DiffICDR, self).__init__(config, dataset)
+        super(CDCDR, self).__init__(config, dataset)
 
         self.SOURCE_LABEL = dataset.source_domain_dataset.label_field
         self.TARGET_LABEL = dataset.target_domain_dataset.label_field
@@ -394,7 +394,7 @@ class DiffICDR(CrossDomainRecommender):
     def calculate_loss(self, interaction):
         r"""Data processing and call function forward(), return loss
 
-        To use DiffICDR, a user must have a historical transaction record,
+        To use CDCDR, a user must have a historical transaction record,
         a pos item and a sequence of neg items. Based on the RecBole
         framework, the data in the interaction object is ordered, so
         we can get the data quickly.

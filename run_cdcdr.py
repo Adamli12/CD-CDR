@@ -1,11 +1,11 @@
 import argparse
 
-from DiffICDR.quick_start import run_recbole_cdr
+from CDCDR.quick_start import run_recbole_cdr
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', '-m', type=str, default='DiffICDR', help='name of models')
+    parser.add_argument('--model', '-m', type=str, default='CDCDR', help='name of models')
     parser.add_argument('--config_files', type=str, default=None, help='config files')
 
     args, _ = parser.parse_known_args()

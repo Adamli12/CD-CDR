@@ -2,7 +2,7 @@
 
 
 """
-DiffICDR.config.cd_configurator
+CDCDR.config.cd_configurator
 ################################
 """
 import os
@@ -11,7 +11,7 @@ from recbole.config.configurator import Config
 from recbole.evaluator import metric_types, smaller_metrics
 from recbole.utils import EvaluatorType, ModelType, InputType
 
-from DiffICDR.utils import get_model, train_mode2state
+from CDCDR.utils import get_model, train_mode2state
 
 
 class CDRConfig(Config):

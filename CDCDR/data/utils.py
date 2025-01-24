@@ -1,6 +1,6 @@
 
 """
-DiffICDR.data.utils
+CDCDR.data.utils
 ########################
 """
 
@@ -13,9 +13,9 @@ from recbole.data.utils import load_split_dataloaders, save_split_dataloaders, c
 from recbole.utils import set_color
 from recbole.utils.argument_list import dataset_arguments
 
-from DiffICDR.data.dataloader import *
-from DiffICDR.sampler import CrossDomainSourceSampler
-from DiffICDR.utils import ModelType
+from CDCDR.data.dataloader import *
+from CDCDR.sampler import CrossDomainSourceSampler
+from CDCDR.utils import ModelType
 
 
 def create_dataset(config):
@@ -30,7 +30,7 @@ def create_dataset(config):
     Returns:
         Dataset: Constructed dataset.
     """
-    dataset_module = importlib.import_module('DiffICDR.data.dataset')
+    dataset_module = importlib.import_module('CDCDR.data.dataset')
     if hasattr(dataset_module, config['model'] + 'Dataset'):
         dataset_class = getattr(dataset_module, config['model'] + 'Dataset')
     else:

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-DiffICDR.sampler
+CDCDR.sampler
 ########################
 """
 

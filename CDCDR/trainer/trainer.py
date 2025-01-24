@@ -1,13 +1,13 @@
 
 
 r"""
-DiffICDR.trainer.trainer
+CDCDR.trainer.trainer
 ################################
 """
 
 import numpy as np
 from recbole.trainer import Trainer
-from DiffICDR.utils import train_mode2state
+from CDCDR.utils import train_mode2state
 
 
 class CrossDomainTrainer(Trainer):

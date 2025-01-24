@@ -1,7 +1,7 @@
 
 
 """
-DiffICDR.data.dataloader
+CDCDR.data.dataloader
 ################################################
 """
 
@@ -14,7 +14,7 @@ from recbole.data.interaction import Interaction
 from recbole.data.dataloader.abstract_dataloader import AbstractDataLoader
 from recbole.data.dataloader.general_dataloader import TrainDataLoader, FullSortEvalDataLoader
 
-from DiffICDR.utils import CrossDomainDataLoaderState
+from CDCDR.utils import CrossDomainDataLoaderState
 from torch.utils.data.dataloader import _DatasetKind
 
 
