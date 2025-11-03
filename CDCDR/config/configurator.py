@@ -2,7 +2,7 @@
 
 
 """
-CDCDR.config.cd_configurator
+DiffICDR.config.cd_configurator
 ################################
 """
 import os

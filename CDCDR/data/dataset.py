@@ -542,7 +542,7 @@ class CrossDomainDataset:
 
     def build(self):
         """Processing dataset in target domain according to evaluation setting, including Group, Order and Split.
-        See :class:`~CUT.config.eval_setting.EvalSetting` for details.
+        See :class:`~recbole_cdr.config.eval_setting.EvalSetting` for details.
         Returns:
             list: List of built :class:`Dataset`.
         """

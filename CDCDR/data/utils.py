@@ -93,11 +93,37 @@ def data_preparation(config, dataset):
         target_train_sampler, target_valid_sampler, target_test_sampler = \
             create_samplers(config, dataset.target_domain_dataset, built_datasets[2:])
 
+        target_cold_valid = config['t_cold_valid']
+        target_cold_test = config['t_cold_test']
+        if target_cold_test + target_cold_valid > 0:
+            target_validu_num = int(dataset.num_overlap_user * target_cold_valid)
+            target_testu_num = int(dataset.num_overlap_user * target_cold_test)
+
+            target_user_ids = target_train_dataset.inter_feat.interaction['target_user_id']
+            target_overlap_user_ids = target_user_ids.unique()[target_user_ids.unique() < dataset.num_overlap_user] # num_overlap_user has padding 0 included
+            rand_id = torch.randperm(len(target_overlap_user_ids))
+            valid_user = rand_id[:target_validu_num]
+            test_user = rand_id[target_validu_num:target_validu_num+target_testu_num]
+            valid_index, test_index, train_index = [], [], []
+            for idx, id in enumerate(target_user_ids):
+                if id in valid_user:
+                    valid_index.append(idx)
+                elif id in test_user:
+                    test_index.append(idx)
+                else:
+                    train_index.append(idx)
+            train_index = np.sort(np.array(train_index))
+            valid_index = np.sort(np.array(valid_index))
+            test_index = np.sort(np.array(test_index))
+            target_valid_dataset.inter_feat = target_train_dataset.inter_feat[valid_index]
+            target_test_dataset.inter_feat = target_train_dataset.inter_feat[test_index]
+            target_train_dataset.inter_feat = target_train_dataset.inter_feat[train_index]
+
         target_retain_frac = config['t_retain_frac']
         if target_retain_frac != 1:
             retain_inter_num = int(target_train_dataset.inter_num * target_retain_frac)
-            np.random.seed(1)
-            retain_inter_index = np.sort(np.random.choice(target_train_dataset.inter_num,retain_inter_num,))
+            #np.random.seed(1)
+            retain_inter_index = np.sort(np.random.choice(target_train_dataset.inter_num, retain_inter_num))
             #target_train_dataset.inter_num = retain_inter_num
             target_train_dataset.inter_feat = target_train_dataset.inter_feat[retain_inter_index]
 

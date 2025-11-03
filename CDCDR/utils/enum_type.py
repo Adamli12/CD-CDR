@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-CDCDR.utils.enum_type
+DiffICDR.utils.enum_type
 #######################
 """
 

@@ -3,7 +3,7 @@ state: INFO
 field_separator: "\t"
 source_domain:
   #dataset: DoubanMovie
-  dataset: 'AmazonSports'
+  dataset: 'AmazonCloth'
   #dataset: ml-1m
   #data_path: 'dataset/Douban'
   data_path: 'dataset/Amazon'
@@ -24,7 +24,7 @@ source_domain:
 
 target_domain:
   #dataset: 'DoubanMusic'
-  dataset: 'AmazonCloth'
+  dataset: 'AmazonSports'
   #dataset: ml-100k
   #data_path: 'dataset/Douban'
   data_path: 'dataset/Amazon'

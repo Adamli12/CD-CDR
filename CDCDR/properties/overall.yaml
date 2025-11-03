@@ -1,5 +1,5 @@
 # general
-gpu_id: '3'
+gpu_id: '7'
 nproc: 1
 use_gpu: True
 seed: 2024
@@ -32,11 +32,16 @@ clip_grad_norm: ~
 weight_decay: 1e-6
 loss_decimal_place: 4
 require_pow: False
-t_retain_frac: 1
+t_retain_frac: 1 # target retain fraction, for sparse target domain experiment
+#t_cold_valid: 0.1 # cold user in the target domain valid set, happens in utils.py after spliting the dataset and before dataloader
+#t_cold_test: 0.1 # cold user in the target domain test set
+t_cold_valid: 0
+t_cold_test: 0
 
 # evaluation settings
 eval_args: 
 #this is for target domain, train valid and test
+  #split: {'RS':[1,0,0]} # for cold start setting, after split in 1,0,0, the valid and test will be according to t_cold_valid and t_cold_test
   split: {'RS':[0.8,0.1,0.1]}
 #this is for source domain, train and valid
   split_valid: {'RS':[0.8,0.2]}

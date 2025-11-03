@@ -1,0 +1,41 @@
+embedding_size: 8192              # (int) The embedding size of users and items.
+#margin: 0.5                     # (float) The margin to filter negative samples. Range in [-1, 1].
+#negative_weight: 10             # (int) Weight to balance between positive-sample and negative-sample loss. 
+#gamma: 0.2                      # (float) Weight for fusion of user' and interacted items' representations. large gamma induce more user rep.
+gamma: 0                      # (float) Weight for fusion of user' and interacted items' representations. large gamma induce more user rep.
+aggregator: 'transformer'              # (str) The item aggregator ranging in ['mean', 'user_attention', 'self_attention', 'transformer'].
+history_len: 20                 # (int) The length of the user's historical interaction items.
+#reg_weight: 0               # (float) The L2 regularization weights.
+weight_decay: 0
+train_neg_sample_args:          # (dict) Negative sampling configuration for model training.
+  distribution: uniform         # (str) The distribution of negative items.
+  sample_num: 1                 # (int) The sampled num of negative items.
+  alpha: 1.0                    # (float) The power of sampling probability for popularity distribution.
+  dynamic: False                # (bool) Whether to use dynamic negative sampling.
+  candidate_num: 0
+
+## Edit From DreamRec
+diffuser_type: mlp1
+loss_type: l2
+timestep: 2000                    # 200, diffusion steps
+uncon_w: 5                    # 2, the weight of conditioned diffusion in inference phase
+uncon_p: 0.1                    # 0.1, how much prob does train phase use unconditioned diffusion
+beta_sche: linear                  # exp, the schedule of beta sequence
+dropout: 0.1
+layer_norm: 1                   # if using layer norm
+
+gpu_id: 0                       #0:3, 1:4, 2:5, 3:7, 4:0, 5:1, 6:2, 7:6
+simple: 0
+
+#transformer
+n_heads: 1
+n_layers: 1
+mean_pooling: 0                # if using mean pooling, 0: no, 1: yes
+loss_n: bce
+
+# training settings
+train_epochs: ["BOTH:1000"]
+train_batch_size: 2048
+learning_rate: 0.00001
+eval_step: 1
+stopping_step: 200
